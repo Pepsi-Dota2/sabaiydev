@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:sabaiydev/src/core/config/DI/config.dart';
 import 'package:sabaiydev/src/core/config/router/router.dart';
+import 'package:sabaiydev/src/core/config/themes/theme.dart';
 
 void main() async {
   await configureDependencies();
@@ -22,6 +23,8 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: GlobalThemeData.lightThemeData,
+       themeMode: ThemeMode.system,
         // localizationsDelegates: context.localizationDelegates,
         localizationsDelegates: [
           EasyLocalization.of(context)!.delegate,
