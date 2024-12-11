@@ -1,0 +1,10 @@
+{
+    "login": {
+        "label_login": "ເຂົາລະບຸ",
+        "label_please_select": "ກະລຸນາເຂົາລະບຸເພື່ອສະເຫຼີມຕໍ່",
+        "label_password": "ລະຫັດຜ່ານ",
+        "label_username": "ຊື່ຜູ້ໃຊ້",
+        "label_email": "ອີເມວ",
+        "label_do_not_have_account": "ບໍ່ມີບັນຊີ"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "login": {
+        "label_login": "Login",
+        "label_please_select": "Please login to continue",
+        "label_password": "Password",
+        "label_username": "Username",
+        "label_email": "Email",
+        "label_do_not_have_account": "Don't have an account"
+    }
+}
