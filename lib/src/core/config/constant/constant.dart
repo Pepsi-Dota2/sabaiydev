@@ -6,6 +6,11 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: Colors.black, 
   );
+  static const TextStyle lightHeading1 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.normal,
+    color: Colors.black, 
+  );
 
   static const TextStyle heading2 = TextStyle(
     fontSize: 20,

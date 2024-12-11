@@ -9,7 +9,7 @@ class TitleServiceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: AppTextStyles.heading1,
+      style: AppTextStyles.lightHeading1,
     );
   }
 }

@@ -61,7 +61,8 @@ class HomePage extends StatelessWidget {
                   },
                   physics: const BouncingScrollPhysics(),
                 ),
-              )
+              ),
+              const TitleServiceWidget(title: "Recent Files")
             ],
           ),
         ),
