@@ -5,12 +5,12 @@ import 'package:sabaiydev/src/core/config/constant/constant.dart';
 import 'package:sabaiydev/src/core/config/constant/enum.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  const CategoriesWidget(
-      {super.key,
-      required this.assetSvgName,
-      required this.title,
-      this.file,
-      required this.sizeData, required this.index});
+  const CategoriesWidget({super.key,
+  required this.assetSvgName,
+  required this.title,
+  this.file,
+  required this.sizeData,
+  required this.index});
   final String assetSvgName;
   final String title;
   final int? file;
@@ -34,7 +34,10 @@ class CategoriesWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title , style: AppTextStyles.caption,),
+                Text(
+                  title,
+                  style: AppTextStyles.caption,
+                ),
                 const Gap(10),
                 Container(
                     padding: const EdgeInsets.all(12),
@@ -49,7 +52,10 @@ class CategoriesWidget extends StatelessWidget {
                 const Gap(10),
                 Text("${file ?? 0} Files"),
                 const Gap(10),
-                Text("${sizeData.toStringAsFixed(0)} MB", style: AppTextStyles.caption,)
+                Text(
+                  "${sizeData.toStringAsFixed(0)} MB",
+                  style: AppTextStyles.caption,
+                )
               ],
             ),
           ),

@@ -4,7 +4,7 @@ import 'package:sabaiydev/src/core/config/constant/app_color.dart';
 
 enum DataStatus { initial, loading, success, failure, error }
 
-enum BottomNavigation { home , file , share , short}
+enum NavbarItem { home , file , share , short}
 
 enum CategoryType {
   imagesFile,
