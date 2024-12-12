@@ -10,11 +10,11 @@ class CustomSkeleton extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: 1,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
       ),
-      itemCount: 4,
+      itemCount: 6,
       itemBuilder: (BuildContext context, int index) {
         return Skeletonizer(
           child: ClipRRect(

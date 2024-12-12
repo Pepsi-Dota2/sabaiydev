@@ -94,6 +94,9 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                                 imageUrl: data.image,
                                 fit: BoxFit.cover,
                                 width: size.width * 0.2,
+                                placeholder: (context, url) => const CustomSkeleton(),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
                               ),
                               title: Text(data.name),
                               subtitle: Text(data.startedDate.toString()),
@@ -126,13 +129,16 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                                   fit: BoxFit.fitWidth,
                                   height: size.height * 0.1,
                                   width: size.width * 1,
-                                ),
+                                  placeholder: (context, url) =>const CustomSkeleton(),
+                                  errorWidget: (context, url, error) =>const Icon(Icons.error),),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      mockData.name.length > 15 ? '${mockData.name.substring(0, 15)}...' : mockData.name,
+                                      mockData.name.length > 15
+                                          ? '${mockData.name.substring(0, 15)}...'
+                                          : mockData.name,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                     ),
