@@ -188,7 +188,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                       placeholder: (context, url) =>
                                           const CustomSkeleton(),
                                       errorWidget: (context, url, error) =>
-                                          const Icon(Icons.error),
+                                          Image.asset("assets/images/man.jpg"),
                                     ),
                                     Row(
                                       mainAxisAlignment:
