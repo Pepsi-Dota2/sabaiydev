@@ -36,6 +36,7 @@ class TabBarWidget extends StatelessWidget {
             unselectedBorderColor: Colors.white,
             radius: 100,
             contentCenter: true,
+            backgroundColor: AppColors.tealGreen,
             tabs: const [
               Tab(text: "Files"),
               Tab(text: "Folders"),

@@ -12,8 +12,11 @@ class FileCubit extends Cubit<FileState> {
     emit(state.copyWith(selectTab: index));
   }
 
-  void onListTabChnage() {
-    emit(state.copyWith(onListTab: !state.onListTab));
+  void onListFileTabChange() {
+    emit(state.copyWith(onListFileTab: !state.onListFileTab));
+  }
+   void onListFolderTabChange() {
+    emit(state.copyWith(onListFolderTab: !state.onListFolderTab));
   }
 
   Future<void> loadingFiles() async {

@@ -74,13 +74,13 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                       ),
                     );
                   },
-                  onClick: state.onListTab,
+                  onClick: state.onListFileTab,
                   onListTap: () {
-                    cubit.onListTabChnage();
+                    cubit.onListFileTabChange();
                   },
                 ),
                 const Gap(16),
-                state.onListTab
+                state.onListFileTab
                     ? ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
@@ -96,6 +96,7 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                                 width: size.width * 0.2,
                               ),
                               title: Text(data.name),
+                              subtitle: Text(data.startedDate.toString()),
                               trailing: IconButton(
                                 onPressed: () {},
                                 icon: const Icon(Icons.more_vert),
@@ -130,10 +131,14 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(mockData.name),
+                                    Text(
+                                      mockData.name.length > 15 ? '${mockData.name.substring(0, 15)}...' : mockData.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
                                     IconButton(
                                       onPressed: () {},
-                                      icon: const Icon(Icons.list),
+                                      icon: const Icon(Icons.more_vert),
                                     ),
                                   ],
                                 ),
