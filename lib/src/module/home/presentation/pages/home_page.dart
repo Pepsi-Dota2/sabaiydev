@@ -3,7 +3,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:sabaiydev/src/core/widgets/bottom_sheet.dart';
+import 'package:sabaiydev/src/core/widgets/bottom_sheets.dart';
+import 'package:sabaiydev/src/core/widgets/custom_bottom_sheet.dart';
 import 'package:sabaiydev/src/core/widgets/title_service.dart';
 import 'package:sabaiydev/src/module/files/domain/model/file_images.dart';
 import 'package:sabaiydev/src/module/files/domain/model/filter_type_model.dart';
@@ -218,21 +219,6 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
             ),
           );
         },
-      ),
-    );
-  }
-
-  void showCustomBottomSheet({
-    required BuildContext context,
-    required double height,
-    required Widget content,
-  }) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => CustomBottomSheet(
-        height: height,
-        content: content,
       ),
     );
   }

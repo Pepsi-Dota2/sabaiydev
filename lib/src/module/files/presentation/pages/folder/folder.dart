@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:sabaiydev/src/core/config/constant/app_color.dart';
-import 'package:sabaiydev/src/core/widgets/bottom_sheet.dart';
+import 'package:sabaiydev/src/core/widgets/bottom_sheets.dart';
 import 'package:sabaiydev/src/module/files/domain/model/filter_type_model.dart';
 import 'package:sabaiydev/src/module/files/domain/model/folder_type.dart';
 import 'package:sabaiydev/src/module/files/presentation/cubit/file_cubit.dart';
@@ -90,7 +90,12 @@ class FolderTabPage extends StatelessWidget implements AutoRouteWrapper {
                               title: Text(data.name),
                               subtitle: Text(data.startedDate ?? ""),
                               trailing: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showCustomBottomSheet(
+                                      context: context,
+                                      height: size.height * 0.5,
+                                      content: Container());
+                                },
                                 icon: const Icon(Icons.more_vert),
                               ),
                             ),
@@ -128,12 +133,19 @@ class FolderTabPage extends StatelessWidget implements AutoRouteWrapper {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    mockData.name.length > 15 ? '${mockData.name.substring(0, 15)}...' : mockData.name,
+                                    mockData.name.length > 15
+                                        ? '${mockData.name.substring(0, 15)}...'
+                                        : mockData.name,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                   ),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      showCustomBottomSheet(
+                                          context: context,
+                                          height: size.height * 0.5,
+                                          content: Container());
+                                    },
                                     icon: const Icon(Icons.more_vert),
                                   ),
                                 ],
@@ -147,21 +159,6 @@ class FolderTabPage extends StatelessWidget implements AutoRouteWrapper {
           ),
         );
       },
-    );
-  }
-
-  void showCustomBottomSheet({
-    required BuildContext context,
-    required double height,
-    required Widget content,
-  }) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => CustomBottomSheet(
-        height: height,
-        content: content,
-      ),
     );
   }
 }

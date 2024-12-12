@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sabaiydev/src/core/config/constant/app_color.dart';
 import 'package:sabaiydev/src/core/config/constant/enum.dart';
+import 'package:sabaiydev/src/core/widgets/bottom_sheets.dart';
 import 'package:sabaiydev/src/module/files/presentation/cubit/file_cubit.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/file_page.dart';
 import 'package:sabaiydev/src/module/home/presentation/cubit/home_cubit.dart';
@@ -32,12 +33,19 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<HomeCubit>();
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showCustomBottomSheet(
+              context: context,
+              height: size.height * 0.5,
+              content: Container());
+        },
         shape: const CircleBorder(),
         child: const Icon(
           Icons.add,

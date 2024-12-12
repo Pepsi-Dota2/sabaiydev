@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:sabaiydev/src/core/config/constant/enum.dart';
-import 'package:sabaiydev/src/core/widgets/bottom_sheet.dart';
+import 'package:sabaiydev/src/core/widgets/bottom_sheets.dart';
+import 'package:sabaiydev/src/core/widgets/custom_bottom_sheet.dart';
 import 'package:sabaiydev/src/module/files/domain/model/file_images.dart';
 import 'package:sabaiydev/src/module/files/domain/model/filter_type_model.dart';
 import 'package:sabaiydev/src/module/files/presentation/cubit/file_cubit.dart';
@@ -99,13 +100,18 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                                   placeholder: (context, url) =>
                                       const CustomSkeleton(),
                                   errorWidget: (context, url, error) =>
-                                       Image.asset("assets/images/man.jpg"),
+                                      Image.asset("assets/images/man.jpg"),
                                 ),
                               ),
                               title: Text(data.name),
                               subtitle: Text(data.startedDate.toString()),
                               trailing: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showCustomBottomSheet(
+                                      context: context,
+                                      height: size.height * 0.5,
+                                      content: Container());
+                                },
                                 icon: const Icon(Icons.more_vert),
                               ),
                             ),
@@ -124,42 +130,45 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                         itemCount: mockData.length,
                         itemBuilder: (BuildContext context, int index) {
                           final mockData = FileImagesModel.fileImages[index];
-                          final isSelected = state.selectedFiles.contains(mockData);
-                          return InkWell(
-                            onLongPress: () {},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Column(
-                                children: [
-                                  CachedNetworkImage(
-                                    imageUrl: mockData.image,
-                                    fit: BoxFit.fitWidth,
-                                    height: size.height * 0.1,
-                                    width: size.width * 1,
-                                    placeholder: (context, url) =>
-                                        const CustomSkeleton(),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        mockData.name.length > 15
-                                            ? '${mockData.name.substring(0, 15)}...'
-                                            : mockData.name,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.more_vert),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                          final isSelected =
+                              state.selectedFiles.contains(mockData);
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Column(
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl: mockData.image,
+                                  fit: BoxFit.fitWidth,
+                                  height: size.height * 0.1,
+                                  width: size.width * 1,
+                                  placeholder: (context, url) =>
+                                      const CustomSkeleton(),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      mockData.name.length > 15
+                                          ? '${mockData.name.substring(0, 15)}...'
+                                          : mockData.name,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        showCustomBottomSheet(
+                                            context: context,
+                                            height: size.height * 0.5,
+                                            content: Container());
+                                      },
+                                      icon: const Icon(Icons.more_vert),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           );
                         },
@@ -169,21 +178,6 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
           ),
         );
       },
-    );
-  }
-
-  void showCustomBottomSheet({
-    required BuildContext context,
-    required double height,
-    required Widget content,
-  }) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => CustomBottomSheet(
-        height: height,
-        content: content,
-      ),
     );
   }
 }
