@@ -90,14 +90,17 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4),
                             child: ListTile(
-                              leading: CachedNetworkImage(
-                                imageUrl: data.image,
-                                fit: BoxFit.cover,
-                                width: size.width * 0.2,
-                                placeholder: (context, url) =>
-                                    const CustomSkeleton(),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
+                              leading: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: CachedNetworkImage(
+                                  imageUrl: data.image,
+                                  fit: BoxFit.cover,
+                                  width: size.width * 0.2,
+                                  placeholder: (context, url) =>
+                                      const CustomSkeleton(),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                ),
                               ),
                               title: Text(data.name),
                               subtitle: Text(data.startedDate.toString()),
@@ -121,11 +124,11 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                         itemCount: mockData.length,
                         itemBuilder: (BuildContext context, int index) {
                           final mockData = FileImagesModel.fileImages[index];
-                          final isSelected =
-                              state.selectedFiles.contains(mockData);
+                          final isSelected = state.selectedFiles.contains(mockData);
                           return InkWell(
                             onLongPress: () {},
                             child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
                               child: Column(
                                 children: [
                                   CachedNetworkImage(

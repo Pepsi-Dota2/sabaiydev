@@ -1,16 +1,18 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:sabaiydev/src/core/widgets/bottom_sheet.dart';
 import 'package:sabaiydev/src/core/widgets/title_service.dart';
+import 'package:sabaiydev/src/module/files/domain/model/file_images.dart';
 import 'package:sabaiydev/src/module/files/domain/model/filter_type_model.dart';
+import 'package:sabaiydev/src/module/files/presentation/widgets/custom_skeleton.dart';
 import 'package:sabaiydev/src/module/files/presentation/widgets/filter_date.dart';
 import 'package:sabaiydev/src/module/home/domain/model/category_model.dart';
 import 'package:sabaiydev/src/module/home/domain/model/storage_model.dart';
 import 'package:sabaiydev/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:sabaiydev/src/module/home/presentation/widget/categories.dart';
-import 'package:sabaiydev/src/module/home/presentation/widget/filter_date.dart';
 import 'package:sabaiydev/src/module/home/presentation/widget/piechart_widget.dart';
 
 @RoutePage()
@@ -32,6 +34,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
     final size = MediaQuery.of(context).size;
     final cubit = context.read<HomeCubit>();
     final filterData = FilterTypeModel.getMockFilterTypeData;
+    final mockData = FileImagesModel.fileImages;
     return Scaffold(
       appBar: AppBar(
         title: Text("home page"),
@@ -125,7 +128,91 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                         ),
                       );
                     },
-                  )
+                  ),
+                  const Gap(20),
+                  state.onClick
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: mockData.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final data = mockData[index];
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 4),
+                              child: ListTile(
+                                leading: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: CachedNetworkImage(
+                                    imageUrl: data.image,
+                                    fit: BoxFit.cover,
+                                    width: size.width * 0.2,
+                                    placeholder: (context, url) =>
+                                        const CustomSkeleton(),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
+                                ),
+                                title: Text(data.name),
+                                subtitle: Text(data.startedDate.toString()),
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.more_vert),
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      : GridView.builder(
+                          shrinkWrap: true,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 16,
+                            mainAxisSpacing: 16,
+                          ),
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: mockData.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            final mockData = FileImagesModel.fileImages[index];
+                            return InkWell(
+                              onLongPress: () {},
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Column(
+                                  children: [
+                                    CachedNetworkImage(
+                                      imageUrl: mockData.image,
+                                      fit: BoxFit.fitWidth,
+                                      height: size.height * 0.1,
+                                      width: size.width * 1,
+                                      placeholder: (context, url) =>
+                                          const CustomSkeleton(),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          mockData.name.length > 15
+                                              ? '${mockData.name.substring(0, 15)}...'
+                                              : mockData.name,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                        ),
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(Icons.more_vert),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        )
                 ],
               ),
             ),
