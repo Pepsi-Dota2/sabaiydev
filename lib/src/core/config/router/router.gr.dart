@@ -30,7 +30,7 @@ abstract class _$AppRouter extends RootStackRouter {
     FileTabRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const FileTabPage(),
+        child: WrappedRoute(child: const FileTabPage()),
       );
     },
     FolderTabRoute.name: (routeData) {

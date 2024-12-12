@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FileState {
   DataStatus get status => throw _privateConstructorUsedError;
   dynamic get selectTab => throw _privateConstructorUsedError;
+  dynamic get onListTab => throw _privateConstructorUsedError;
+  List<FileImagesModel> get fileImage => throw _privateConstructorUsedError;
 
   /// Create a copy of FileState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +33,11 @@ abstract class $FileStateCopyWith<$Res> {
   factory $FileStateCopyWith(FileState value, $Res Function(FileState) then) =
       _$FileStateCopyWithImpl<$Res, FileState>;
   @useResult
-  $Res call({DataStatus status, dynamic selectTab});
+  $Res call(
+      {DataStatus status,
+      dynamic selectTab,
+      dynamic onListTab,
+      List<FileImagesModel> fileImage});
 }
 
 /// @nodoc
@@ -51,6 +57,8 @@ class _$FileStateCopyWithImpl<$Res, $Val extends FileState>
   $Res call({
     Object? status = null,
     Object? selectTab = freezed,
+    Object? onListTab = freezed,
+    Object? fileImage = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -61,6 +69,14 @@ class _$FileStateCopyWithImpl<$Res, $Val extends FileState>
           ? _value.selectTab
           : selectTab // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      onListTab: freezed == onListTab
+          ? _value.onListTab
+          : onListTab // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      fileImage: null == fileImage
+          ? _value.fileImage
+          : fileImage // ignore: cast_nullable_to_non_nullable
+              as List<FileImagesModel>,
     ) as $Val);
   }
 }
@@ -73,7 +89,11 @@ abstract class _$$FileStateImplCopyWith<$Res>
       __$$FileStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DataStatus status, dynamic selectTab});
+  $Res call(
+      {DataStatus status,
+      dynamic selectTab,
+      dynamic onListTab,
+      List<FileImagesModel> fileImage});
 }
 
 /// @nodoc
@@ -91,6 +111,8 @@ class __$$FileStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? selectTab = freezed,
+    Object? onListTab = freezed,
+    Object? fileImage = null,
   }) {
     return _then(_$FileStateImpl(
       status: null == status
@@ -98,6 +120,11 @@ class __$$FileStateImplCopyWithImpl<$Res>
           : status // ignore: cast_nullable_to_non_nullable
               as DataStatus,
       selectTab: freezed == selectTab ? _value.selectTab! : selectTab,
+      onListTab: freezed == onListTab ? _value.onListTab! : onListTab,
+      fileImage: null == fileImage
+          ? _value._fileImage
+          : fileImage // ignore: cast_nullable_to_non_nullable
+              as List<FileImagesModel>,
     ));
   }
 }
@@ -105,7 +132,12 @@ class __$$FileStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FileStateImpl implements _FileState {
-  const _$FileStateImpl({this.status = DataStatus.initial, this.selectTab = 0});
+  const _$FileStateImpl(
+      {this.status = DataStatus.initial,
+      this.selectTab = 0,
+      this.onListTab = false,
+      final List<FileImagesModel> fileImage = const []})
+      : _fileImage = fileImage;
 
   @override
   @JsonKey()
@@ -113,10 +145,21 @@ class _$FileStateImpl implements _FileState {
   @override
   @JsonKey()
   final dynamic selectTab;
+  @override
+  @JsonKey()
+  final dynamic onListTab;
+  final List<FileImagesModel> _fileImage;
+  @override
+  @JsonKey()
+  List<FileImagesModel> get fileImage {
+    if (_fileImage is EqualUnmodifiableListView) return _fileImage;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fileImage);
+  }
 
   @override
   String toString() {
-    return 'FileState(status: $status, selectTab: $selectTab)';
+    return 'FileState(status: $status, selectTab: $selectTab, onListTab: $onListTab, fileImage: $fileImage)';
   }
 
   @override
@@ -125,12 +168,19 @@ class _$FileStateImpl implements _FileState {
         (other.runtimeType == runtimeType &&
             other is _$FileStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other.selectTab, selectTab));
+            const DeepCollectionEquality().equals(other.selectTab, selectTab) &&
+            const DeepCollectionEquality().equals(other.onListTab, onListTab) &&
+            const DeepCollectionEquality()
+                .equals(other._fileImage, _fileImage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, status, const DeepCollectionEquality().hash(selectTab));
+      runtimeType,
+      status,
+      const DeepCollectionEquality().hash(selectTab),
+      const DeepCollectionEquality().hash(onListTab),
+      const DeepCollectionEquality().hash(_fileImage));
 
   /// Create a copy of FileState
   /// with the given fields replaced by the non-null parameter values.
@@ -142,13 +192,20 @@ class _$FileStateImpl implements _FileState {
 }
 
 abstract class _FileState implements FileState {
-  const factory _FileState({final DataStatus status, final dynamic selectTab}) =
-      _$FileStateImpl;
+  const factory _FileState(
+      {final DataStatus status,
+      final dynamic selectTab,
+      final dynamic onListTab,
+      final List<FileImagesModel> fileImage}) = _$FileStateImpl;
 
   @override
   DataStatus get status;
   @override
   dynamic get selectTab;
+  @override
+  dynamic get onListTab;
+  @override
+  List<FileImagesModel> get fileImage;
 
   /// Create a copy of FileState
   /// with the given fields replaced by the non-null parameter values.

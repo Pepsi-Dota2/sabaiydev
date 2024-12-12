@@ -22,11 +22,6 @@ class FilePage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    // Define tab contents
-    final List<Widget> tabItems = [
-      const FileTabPage(),
-      const FolderTabPage(),
-    ];
 
     final cubit = context.read<FileCubit>();
 
@@ -45,7 +40,10 @@ class FilePage extends StatelessWidget implements AutoRouteWrapper {
                 ),
                 Expanded(
                   child: TabBarView(
-                    children: tabItems,
+                    children: [
+                      FileTabPage(),
+                      const FolderTabPage(),
+                    ],
                   ),
                 ),
               ],
