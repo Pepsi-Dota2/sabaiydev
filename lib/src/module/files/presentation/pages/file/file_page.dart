@@ -57,7 +57,7 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                               style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w500),
                             ),
-                            Divider(),
+                            const Divider(),
                             const Gap(16),
                             Expanded(
                               child: ListView.builder(
