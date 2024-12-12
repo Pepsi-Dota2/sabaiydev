@@ -6,5 +6,6 @@ class HomeState with _$HomeState {
     @Default(DataStatus.initial) DataStatus status,
     @Default(0) int index,
     @Default(NavbarItem.home) NavbarItem navbarItem,
+    @Default(false) bool onClick,
   })= _HomeState;
 }

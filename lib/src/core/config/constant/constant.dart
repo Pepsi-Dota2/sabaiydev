@@ -4,40 +4,53 @@ class AppTextStyles {
   static const TextStyle heading1 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
-    color: Colors.black, 
+    color: Colors.black,
   );
   static const TextStyle lightHeading1 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.normal,
-    color: Colors.black, 
+    color: Colors.black,
   );
 
   static const TextStyle heading2 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w600,
-    color: Colors.black87, 
+    color: Colors.black87,
   );
 
   static const TextStyle bodyText = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.normal,
-    color: Colors.grey, 
+    color: Colors.grey,
   );
 
   static const TextStyle description = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
-    color: Colors.blueGrey, 
+    color: Colors.blueGrey,
   );
+
+  static const TextStyle titleTabbar = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: Colors.blueGrey,
+  );
+
+    static const TextStyle secondTabbar = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+
 
   static const TextStyle caption = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    color: Colors.black54, 
+    color: Colors.black54,
   );
-    static const TextStyle premium = TextStyle(
+  static const TextStyle premium = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w400,
-    color: Colors.teal, 
+    color: Colors.teal,
   );
 }

@@ -18,19 +18,31 @@ abstract class _$AppRouter extends RootStackRouter {
     DashBoardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DashBoardPage(),
+        child: WrappedRoute(child: const DashBoardPage()),
       );
     },
     FileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const FilePage(),
+        child: WrappedRoute(child: const FilePage()),
+      );
+    },
+    FileTabRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FileTabPage(),
+      );
+    },
+    FolderTabRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FolderTabPage(),
       );
     },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: WrappedRoute(child: const HomePage()),
       );
     },
     SharedRoute.name: (routeData) {
@@ -72,6 +84,34 @@ class FileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'FileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FileTabPage]
+class FileTabRoute extends PageRouteInfo<void> {
+  const FileTabRoute({List<PageRouteInfo>? children})
+      : super(
+          FileTabRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FileTabRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FolderTabPage]
+class FolderTabRoute extends PageRouteInfo<void> {
+  const FolderTabRoute({List<PageRouteInfo>? children})
+      : super(
+          FolderTabRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FolderTabRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

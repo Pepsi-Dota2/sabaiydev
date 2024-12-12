@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sabaiydev/src/core/config/constant/enum.dart';
 
@@ -24,5 +23,9 @@ class HomeCubit extends Cubit<HomeState> {
         emit(state.copyWith(navbarItem: NavbarItem.short, index: 2));
         break;
     }
+  }
+
+  void onClick() {
+    emit(state.copyWith(onClick: !state.onClick));
   }
 }

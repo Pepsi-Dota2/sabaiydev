@@ -19,6 +19,7 @@ mixin _$HomeState {
   DataStatus get status => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
   NavbarItem get navbarItem => throw _privateConstructorUsedError;
+  bool get onClick => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +33,8 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({DataStatus status, int index, NavbarItem navbarItem});
+  $Res call(
+      {DataStatus status, int index, NavbarItem navbarItem, bool onClick});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? status = null,
     Object? index = null,
     Object? navbarItem = null,
+    Object? onClick = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -67,6 +70,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.navbarItem
           : navbarItem // ignore: cast_nullable_to_non_nullable
               as NavbarItem,
+      onClick: null == onClick
+          ? _value.onClick
+          : onClick // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -79,7 +86,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DataStatus status, int index, NavbarItem navbarItem});
+  $Res call(
+      {DataStatus status, int index, NavbarItem navbarItem, bool onClick});
 }
 
 /// @nodoc
@@ -98,6 +106,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? index = null,
     Object? navbarItem = null,
+    Object? onClick = null,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -112,6 +121,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.navbarItem
           : navbarItem // ignore: cast_nullable_to_non_nullable
               as NavbarItem,
+      onClick: null == onClick
+          ? _value.onClick
+          : onClick // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -122,7 +135,8 @@ class _$HomeStateImpl implements _HomeState {
   const _$HomeStateImpl(
       {this.status = DataStatus.initial,
       this.index = 0,
-      this.navbarItem = NavbarItem.home});
+      this.navbarItem = NavbarItem.home,
+      this.onClick = false});
 
   @override
   @JsonKey()
@@ -133,10 +147,13 @@ class _$HomeStateImpl implements _HomeState {
   @override
   @JsonKey()
   final NavbarItem navbarItem;
+  @override
+  @JsonKey()
+  final bool onClick;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, index: $index, navbarItem: $navbarItem)';
+    return 'HomeState(status: $status, index: $index, navbarItem: $navbarItem, onClick: $onClick)';
   }
 
   @override
@@ -147,11 +164,13 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.navbarItem, navbarItem) ||
-                other.navbarItem == navbarItem));
+                other.navbarItem == navbarItem) &&
+            (identical(other.onClick, onClick) || other.onClick == onClick));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, index, navbarItem);
+  int get hashCode =>
+      Object.hash(runtimeType, status, index, navbarItem, onClick);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -166,7 +185,8 @@ abstract class _HomeState implements HomeState {
   const factory _HomeState(
       {final DataStatus status,
       final int index,
-      final NavbarItem navbarItem}) = _$HomeStateImpl;
+      final NavbarItem navbarItem,
+      final bool onClick}) = _$HomeStateImpl;
 
   @override
   DataStatus get status;
@@ -174,6 +194,8 @@ abstract class _HomeState implements HomeState {
   int get index;
   @override
   NavbarItem get navbarItem;
+  @override
+  bool get onClick;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

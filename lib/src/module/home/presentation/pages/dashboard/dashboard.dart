@@ -2,7 +2,9 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sabaiydev/src/core/config/constant/app_color.dart';
 import 'package:sabaiydev/src/core/config/constant/enum.dart';
+import 'package:sabaiydev/src/module/files/presentation/cubit/file_cubit.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/file_page.dart';
 import 'package:sabaiydev/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:sabaiydev/src/module/home/presentation/pages/home_page.dart';
@@ -14,8 +16,15 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
   const DashBoardPage({super.key});
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FileCubit(),
+        ),
+      ],
       child: this,
     );
   }
@@ -24,14 +33,23 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     final cubit = context.read<HomeCubit>();
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: FloatingActionButton(onPressed: (){}),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        shape: const CircleBorder(),
+        child: const Icon(
+          Icons.add,
+          color: AppColors.primary,
+        ),
+      ),
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: const [
-          Icons.home_outlined,
-          Icons.file_copy_outlined,
-          Icons.person_4_outlined,
-          Icons.short_text_outlined
+          Icons.home,
+          Icons.file_copy,
+          Icons.share,
+          Icons.short_text
         ],
         activeIndex: 0,
         gapLocation: GapLocation.center,
