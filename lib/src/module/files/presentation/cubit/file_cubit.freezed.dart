@@ -21,6 +21,8 @@ mixin _$FileState {
   dynamic get onListFileTab => throw _privateConstructorUsedError;
   List<FileImagesModel> get fileImage => throw _privateConstructorUsedError;
   dynamic get onListFolderTab => throw _privateConstructorUsedError;
+  List<FileImagesModel> get trash => throw _privateConstructorUsedError;
+  List<FileImagesModel> get selectedFiles => throw _privateConstructorUsedError;
 
   /// Create a copy of FileState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,7 +41,9 @@ abstract class $FileStateCopyWith<$Res> {
       dynamic selectTab,
       dynamic onListFileTab,
       List<FileImagesModel> fileImage,
-      dynamic onListFolderTab});
+      dynamic onListFolderTab,
+      List<FileImagesModel> trash,
+      List<FileImagesModel> selectedFiles});
 }
 
 /// @nodoc
@@ -62,6 +66,8 @@ class _$FileStateCopyWithImpl<$Res, $Val extends FileState>
     Object? onListFileTab = freezed,
     Object? fileImage = null,
     Object? onListFolderTab = freezed,
+    Object? trash = null,
+    Object? selectedFiles = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -84,6 +90,14 @@ class _$FileStateCopyWithImpl<$Res, $Val extends FileState>
           ? _value.onListFolderTab
           : onListFolderTab // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      trash: null == trash
+          ? _value.trash
+          : trash // ignore: cast_nullable_to_non_nullable
+              as List<FileImagesModel>,
+      selectedFiles: null == selectedFiles
+          ? _value.selectedFiles
+          : selectedFiles // ignore: cast_nullable_to_non_nullable
+              as List<FileImagesModel>,
     ) as $Val);
   }
 }
@@ -101,7 +115,9 @@ abstract class _$$FileStateImplCopyWith<$Res>
       dynamic selectTab,
       dynamic onListFileTab,
       List<FileImagesModel> fileImage,
-      dynamic onListFolderTab});
+      dynamic onListFolderTab,
+      List<FileImagesModel> trash,
+      List<FileImagesModel> selectedFiles});
 }
 
 /// @nodoc
@@ -122,6 +138,8 @@ class __$$FileStateImplCopyWithImpl<$Res>
     Object? onListFileTab = freezed,
     Object? fileImage = null,
     Object? onListFolderTab = freezed,
+    Object? trash = null,
+    Object? selectedFiles = null,
   }) {
     return _then(_$FileStateImpl(
       status: null == status
@@ -138,6 +156,14 @@ class __$$FileStateImplCopyWithImpl<$Res>
       onListFolderTab: freezed == onListFolderTab
           ? _value.onListFolderTab!
           : onListFolderTab,
+      trash: null == trash
+          ? _value._trash
+          : trash // ignore: cast_nullable_to_non_nullable
+              as List<FileImagesModel>,
+      selectedFiles: null == selectedFiles
+          ? _value._selectedFiles
+          : selectedFiles // ignore: cast_nullable_to_non_nullable
+              as List<FileImagesModel>,
     ));
   }
 }
@@ -150,8 +176,12 @@ class _$FileStateImpl implements _FileState {
       this.selectTab = 0,
       this.onListFileTab = false,
       final List<FileImagesModel> fileImage = const [],
-      this.onListFolderTab = false})
-      : _fileImage = fileImage;
+      this.onListFolderTab = false,
+      final List<FileImagesModel> trash = const [],
+      final List<FileImagesModel> selectedFiles = const []})
+      : _fileImage = fileImage,
+        _trash = trash,
+        _selectedFiles = selectedFiles;
 
   @override
   @JsonKey()
@@ -174,10 +204,27 @@ class _$FileStateImpl implements _FileState {
   @override
   @JsonKey()
   final dynamic onListFolderTab;
+  final List<FileImagesModel> _trash;
+  @override
+  @JsonKey()
+  List<FileImagesModel> get trash {
+    if (_trash is EqualUnmodifiableListView) return _trash;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_trash);
+  }
+
+  final List<FileImagesModel> _selectedFiles;
+  @override
+  @JsonKey()
+  List<FileImagesModel> get selectedFiles {
+    if (_selectedFiles is EqualUnmodifiableListView) return _selectedFiles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedFiles);
+  }
 
   @override
   String toString() {
-    return 'FileState(status: $status, selectTab: $selectTab, onListFileTab: $onListFileTab, fileImage: $fileImage, onListFolderTab: $onListFolderTab)';
+    return 'FileState(status: $status, selectTab: $selectTab, onListFileTab: $onListFileTab, fileImage: $fileImage, onListFolderTab: $onListFolderTab, trash: $trash, selectedFiles: $selectedFiles)';
   }
 
   @override
@@ -192,7 +239,10 @@ class _$FileStateImpl implements _FileState {
             const DeepCollectionEquality()
                 .equals(other._fileImage, _fileImage) &&
             const DeepCollectionEquality()
-                .equals(other.onListFolderTab, onListFolderTab));
+                .equals(other.onListFolderTab, onListFolderTab) &&
+            const DeepCollectionEquality().equals(other._trash, _trash) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedFiles, _selectedFiles));
   }
 
   @override
@@ -202,7 +252,9 @@ class _$FileStateImpl implements _FileState {
       const DeepCollectionEquality().hash(selectTab),
       const DeepCollectionEquality().hash(onListFileTab),
       const DeepCollectionEquality().hash(_fileImage),
-      const DeepCollectionEquality().hash(onListFolderTab));
+      const DeepCollectionEquality().hash(onListFolderTab),
+      const DeepCollectionEquality().hash(_trash),
+      const DeepCollectionEquality().hash(_selectedFiles));
 
   /// Create a copy of FileState
   /// with the given fields replaced by the non-null parameter values.
@@ -219,7 +271,9 @@ abstract class _FileState implements FileState {
       final dynamic selectTab,
       final dynamic onListFileTab,
       final List<FileImagesModel> fileImage,
-      final dynamic onListFolderTab}) = _$FileStateImpl;
+      final dynamic onListFolderTab,
+      final List<FileImagesModel> trash,
+      final List<FileImagesModel> selectedFiles}) = _$FileStateImpl;
 
   @override
   DataStatus get status;
@@ -231,6 +285,10 @@ abstract class _FileState implements FileState {
   List<FileImagesModel> get fileImage;
   @override
   dynamic get onListFolderTab;
+  @override
+  List<FileImagesModel> get trash;
+  @override
+  List<FileImagesModel> get selectedFiles;
 
   /// Create a copy of FileState
   /// with the given fields replaced by the non-null parameter values.

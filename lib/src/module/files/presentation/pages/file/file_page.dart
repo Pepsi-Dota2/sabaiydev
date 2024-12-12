@@ -94,7 +94,8 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                                 imageUrl: data.image,
                                 fit: BoxFit.cover,
                                 width: size.width * 0.2,
-                                placeholder: (context, url) => const CustomSkeleton(),
+                                placeholder: (context, url) =>
+                                    const CustomSkeleton(),
                                 errorWidget: (context, url, error) =>
                                     const Icon(Icons.error),
                               ),
@@ -120,35 +121,42 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                         itemCount: mockData.length,
                         itemBuilder: (BuildContext context, int index) {
                           final mockData = FileImagesModel.fileImages[index];
-                          return ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Column(
-                              children: [
-                                CachedNetworkImage(
-                                  imageUrl: mockData.image,
-                                  fit: BoxFit.fitWidth,
-                                  height: size.height * 0.1,
-                                  width: size.width * 1,
-                                  placeholder: (context, url) =>const CustomSkeleton(),
-                                  errorWidget: (context, url, error) =>const Icon(Icons.error),),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      mockData.name.length > 15
-                                          ? '${mockData.name.substring(0, 15)}...'
-                                          : mockData.name,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.more_vert),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                          final isSelected =
+                              state.selectedFiles.contains(mockData);
+                          return InkWell(
+                            onLongPress: () {},
+                            child: ClipRRect(
+                              child: Column(
+                                children: [
+                                  CachedNetworkImage(
+                                    imageUrl: mockData.image,
+                                    fit: BoxFit.fitWidth,
+                                    height: size.height * 0.1,
+                                    width: size.width * 1,
+                                    placeholder: (context, url) =>
+                                        const CustomSkeleton(),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        mockData.name.length > 15
+                                            ? '${mockData.name.substring(0, 15)}...'
+                                            : mockData.name,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.more_vert),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },

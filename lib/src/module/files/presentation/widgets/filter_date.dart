@@ -10,7 +10,7 @@ class FilterDate extends StatelessWidget {
   });
 
   final Function()? onFilterDate;
-  final VoidCallback? onListTap;
+  final VoidCallback? onListTap; 
   final bool onClick;
   final String label;
 
@@ -37,12 +37,15 @@ class FilterDate extends StatelessWidget {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: onListTap,
-            child: Icon(
+          
+          if (onListTap != null)
+            GestureDetector(
+              onTap: onListTap,
+              child: Icon(
                 onClick ? Icons.list : Icons.grid_view_sharp,
-                color: Colors.black),
-          ),
+                color: Colors.black,
+              ),
+            ),
         ],
       ),
     );

@@ -8,5 +8,7 @@ class FileState with _$FileState {
     @Default(false) onListFileTab,
     @Default([]) List<FileImagesModel> fileImage,
     @Default(false) onListFolderTab,
+    @Default([]) List<FileImagesModel> trash,
+    @Default([]) List<FileImagesModel> selectedFiles,
   }) = _FileState;
 }

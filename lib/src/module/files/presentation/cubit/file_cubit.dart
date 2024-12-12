@@ -15,7 +15,8 @@ class FileCubit extends Cubit<FileState> {
   void onListFileTabChange() {
     emit(state.copyWith(onListFileTab: !state.onListFileTab));
   }
-   void onListFolderTabChange() {
+
+  void onListFolderTabChange() {
     emit(state.copyWith(onListFolderTab: !state.onListFolderTab));
   }
 
@@ -25,4 +26,47 @@ class FileCubit extends Cubit<FileState> {
     final dataMock = FileImagesModel.fileImages;
     emit(state.copyWith(fileImage: dataMock));
   }
-}
+
+  void deleteFile(FileImagesModel file) {
+    final updatedTrash = List<FileImagesModel>.from(state.trash)..add(file);
+    final updatedFiles = List<FileImagesModel>.from(state.fileImage)
+      ..remove(file);
+    emit(state.copyWith(
+      fileImage: updatedFiles,
+      trash: updatedTrash,
+    ));
+  }
+
+  void restoreFile(FileImagesModel file) {
+    final updatedTrash = List<FileImagesModel>.from(state.trash)..remove(file);
+    final updatedFiles = List<FileImagesModel>.from(state.fileImage)..add(file);
+    emit(state.copyWith(
+      fileImage: updatedFiles,
+      trash: updatedTrash,
+    ));
+  }
+
+  void permanentlyDeleteFile(FileImagesModel file) {
+    final updatedTrash = List<FileImagesModel>.from(state.trash)..remove(file);
+    emit(state.copyWith(trash: updatedTrash));
+  }
+
+  void toggleFileSelection(FileImagesModel file) {
+    final updatedSelectedFiles = List<FileImagesModel>.from(state.selectedFiles);
+    if (updatedSelectedFiles.contains(file)) {
+      updatedSelectedFiles.remove(file);
+    } else {
+      updatedSelectedFiles.add(file);
+    }
+    emit(state.copyWith(selectedFiles: updatedSelectedFiles));
+  }
+
+  void deleteSelectedFiles() {
+    final updatedFiles = List<FileImagesModel>.from(state.fileImage)
+      ..removeWhere((file) => state.selectedFiles.contains(file));
+    emit(state.copyWith(
+      fileImage: updatedFiles,
+      selectedFiles: [],
+    ));
+  }
+  }

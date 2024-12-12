@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:sabaiydev/src/core/config/constant/enum.dart';
+import 'package:sabaiydev/src/core/config/router/router.dart';
 import 'package:sabaiydev/src/module/files/presentation/cubit/file_cubit.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/file/file_page.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/folder/folder.dart';
@@ -36,13 +37,15 @@ class FilePage extends StatelessWidget implements AutoRouteWrapper {
             return Column(
               children: [
                 TabBarWidget(
-                  viewDeleted: () {},
+                  viewDeleted: () {
+                    context.router.push(const TrashRoute());
+                  },
                 ),
-                Expanded(
+               const  Expanded(
                   child: TabBarView(
                     children: [
                       FileTabPage(),
-                      const FolderTabPage(),
+                      FolderTabPage(),
                     ],
                   ),
                 ),

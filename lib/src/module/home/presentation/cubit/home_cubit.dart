@@ -28,4 +28,9 @@ class HomeCubit extends Cubit<HomeState> {
   void onClick() {
     emit(state.copyWith(onClick: !state.onClick));
   }
+
+
+  void ontFileChange() {
+    emit(state.copyWith(onClick: !state.onClick));
+  }
 }

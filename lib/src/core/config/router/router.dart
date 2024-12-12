@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/file/file_page.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/file_page.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/folder/folder.dart';
+import 'package:sabaiydev/src/module/files/presentation/pages/trash_page.dart';
 import 'package:sabaiydev/src/module/home/presentation/pages/dashboard/dashboard.dart';
 import 'package:sabaiydev/src/module/home/presentation/pages/home_page.dart';
 import 'package:sabaiydev/src/module/shared/presentation/pages/shared_page.dart';
@@ -21,5 +22,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: ShortRoute.page),
         AutoRoute(page: FileTabRoute.page),
         AutoRoute(page: FolderTabRoute.page),
+        AutoRoute(page: TrashRoute.page),
       ];
 }
