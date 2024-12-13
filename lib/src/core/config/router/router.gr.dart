@@ -60,7 +60,7 @@ abstract class _$AppRouter extends RootStackRouter {
     TrashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: TrashPage()),
+        child: WrappedRoute(child: const TrashPage()),
       );
     },
   };

@@ -23,7 +23,6 @@ class FilePage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-
     final cubit = context.read<FileCubit>();
 
     return DefaultTabController(
@@ -31,6 +30,13 @@ class FilePage extends StatelessWidget implements AutoRouteWrapper {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Files"),
+          actions: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.download_outlined)),
+            IconButton(
+                onPressed: () {}, icon: Icon(Icons.notifications_outlined)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.person_outlined)),
+          ],
         ),
         body: BlocBuilder<FileCubit, FileState>(
           builder: (context, state) {
@@ -41,7 +47,7 @@ class FilePage extends StatelessWidget implements AutoRouteWrapper {
                     context.router.push(const TrashRoute());
                   },
                 ),
-               const  Expanded(
+                const Expanded(
                   child: TabBarView(
                     children: [
                       FileTabPage(),

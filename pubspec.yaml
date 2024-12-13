@@ -37,6 +37,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.2
   font_awesome_flutter: ^10.8.0
   modal_bottom_sheet: ^3.0.0
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

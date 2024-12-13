@@ -143,8 +143,7 @@ class FileTabPage extends StatelessWidget implements AutoRouteWrapper {
                                   width: size.width * 1,
                                   placeholder: (context, url) =>
                                       const CustomSkeleton(),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
+                                  errorWidget: (context, url, error) => Image.asset("assets/images/man.jpg"),
                                 ),
                                 Row(
                                   mainAxisAlignment:

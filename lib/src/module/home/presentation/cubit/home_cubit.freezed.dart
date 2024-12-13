@@ -20,6 +20,10 @@ mixin _$HomeState {
   int get index => throw _privateConstructorUsedError;
   NavbarItem get navbarItem => throw _privateConstructorUsedError;
   bool get onClick => throw _privateConstructorUsedError;
+  File? get pickedImage => throw _privateConstructorUsedError;
+  bool get isImageLoading => throw _privateConstructorUsedError;
+  String? get imageErrorMessage => throw _privateConstructorUsedError;
+  String? get selectedImagePath => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +38,14 @@ abstract class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
   $Res call(
-      {DataStatus status, int index, NavbarItem navbarItem, bool onClick});
+      {DataStatus status,
+      int index,
+      NavbarItem navbarItem,
+      bool onClick,
+      File? pickedImage,
+      bool isImageLoading,
+      String? imageErrorMessage,
+      String? selectedImagePath});
 }
 
 /// @nodoc
@@ -56,6 +67,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? index = null,
     Object? navbarItem = null,
     Object? onClick = null,
+    Object? pickedImage = freezed,
+    Object? isImageLoading = null,
+    Object? imageErrorMessage = freezed,
+    Object? selectedImagePath = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -74,6 +89,22 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.onClick
           : onClick // ignore: cast_nullable_to_non_nullable
               as bool,
+      pickedImage: freezed == pickedImage
+          ? _value.pickedImage
+          : pickedImage // ignore: cast_nullable_to_non_nullable
+              as File?,
+      isImageLoading: null == isImageLoading
+          ? _value.isImageLoading
+          : isImageLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      imageErrorMessage: freezed == imageErrorMessage
+          ? _value.imageErrorMessage
+          : imageErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedImagePath: freezed == selectedImagePath
+          ? _value.selectedImagePath
+          : selectedImagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -87,7 +118,14 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {DataStatus status, int index, NavbarItem navbarItem, bool onClick});
+      {DataStatus status,
+      int index,
+      NavbarItem navbarItem,
+      bool onClick,
+      File? pickedImage,
+      bool isImageLoading,
+      String? imageErrorMessage,
+      String? selectedImagePath});
 }
 
 /// @nodoc
@@ -107,6 +145,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? index = null,
     Object? navbarItem = null,
     Object? onClick = null,
+    Object? pickedImage = freezed,
+    Object? isImageLoading = null,
+    Object? imageErrorMessage = freezed,
+    Object? selectedImagePath = freezed,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -125,6 +167,22 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.onClick
           : onClick // ignore: cast_nullable_to_non_nullable
               as bool,
+      pickedImage: freezed == pickedImage
+          ? _value.pickedImage
+          : pickedImage // ignore: cast_nullable_to_non_nullable
+              as File?,
+      isImageLoading: null == isImageLoading
+          ? _value.isImageLoading
+          : isImageLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      imageErrorMessage: freezed == imageErrorMessage
+          ? _value.imageErrorMessage
+          : imageErrorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selectedImagePath: freezed == selectedImagePath
+          ? _value.selectedImagePath
+          : selectedImagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -136,7 +194,11 @@ class _$HomeStateImpl implements _HomeState {
       {this.status = DataStatus.initial,
       this.index = 0,
       this.navbarItem = NavbarItem.home,
-      this.onClick = false});
+      this.onClick = false,
+      this.pickedImage,
+      this.isImageLoading = false,
+      this.imageErrorMessage,
+      this.selectedImagePath});
 
   @override
   @JsonKey()
@@ -150,10 +212,19 @@ class _$HomeStateImpl implements _HomeState {
   @override
   @JsonKey()
   final bool onClick;
+  @override
+  final File? pickedImage;
+  @override
+  @JsonKey()
+  final bool isImageLoading;
+  @override
+  final String? imageErrorMessage;
+  @override
+  final String? selectedImagePath;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, index: $index, navbarItem: $navbarItem, onClick: $onClick)';
+    return 'HomeState(status: $status, index: $index, navbarItem: $navbarItem, onClick: $onClick, pickedImage: $pickedImage, isImageLoading: $isImageLoading, imageErrorMessage: $imageErrorMessage, selectedImagePath: $selectedImagePath)';
   }
 
   @override
@@ -165,12 +236,28 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.index, index) || other.index == index) &&
             (identical(other.navbarItem, navbarItem) ||
                 other.navbarItem == navbarItem) &&
-            (identical(other.onClick, onClick) || other.onClick == onClick));
+            (identical(other.onClick, onClick) || other.onClick == onClick) &&
+            (identical(other.pickedImage, pickedImage) ||
+                other.pickedImage == pickedImage) &&
+            (identical(other.isImageLoading, isImageLoading) ||
+                other.isImageLoading == isImageLoading) &&
+            (identical(other.imageErrorMessage, imageErrorMessage) ||
+                other.imageErrorMessage == imageErrorMessage) &&
+            (identical(other.selectedImagePath, selectedImagePath) ||
+                other.selectedImagePath == selectedImagePath));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, index, navbarItem, onClick);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      index,
+      navbarItem,
+      onClick,
+      pickedImage,
+      isImageLoading,
+      imageErrorMessage,
+      selectedImagePath);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -186,7 +273,11 @@ abstract class _HomeState implements HomeState {
       {final DataStatus status,
       final int index,
       final NavbarItem navbarItem,
-      final bool onClick}) = _$HomeStateImpl;
+      final bool onClick,
+      final File? pickedImage,
+      final bool isImageLoading,
+      final String? imageErrorMessage,
+      final String? selectedImagePath}) = _$HomeStateImpl;
 
   @override
   DataStatus get status;
@@ -196,6 +287,14 @@ abstract class _HomeState implements HomeState {
   NavbarItem get navbarItem;
   @override
   bool get onClick;
+  @override
+  File? get pickedImage;
+  @override
+  bool get isImageLoading;
+  @override
+  String? get imageErrorMessage;
+  @override
+  String? get selectedImagePath;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

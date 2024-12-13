@@ -149,14 +149,18 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                     width: size.width * 0.2,
                                     placeholder: (context, url) =>
                                         const CustomSkeleton(),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
+                                    errorWidget: (context, url, error) => Image.asset("assets/images/man.jpg"),
                                   ),
                                 ),
                                 title: Text(data.name),
                                 subtitle: Text(data.startedDate.toString()),
                                 trailing: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    showCustomBottomSheet(
+                                            context: context,
+                                            height: size.height * 0.5,
+                                            content: Container());
+                                  },
                                   icon: const Icon(Icons.more_vert),
                                 ),
                               ),
@@ -203,7 +207,12 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                           maxLines: 1,
                                         ),
                                         IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            showCustomBottomSheet(
+                                            context: context,
+                                            height: size.height * 0.5,
+                                            content: Container());
+                                          },
                                           icon: const Icon(Icons.more_vert),
                                         ),
                                       ],
@@ -213,7 +222,7 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                               ),
                             );
                           },
-                        )
+                        ),
                 ],
               ),
             ),

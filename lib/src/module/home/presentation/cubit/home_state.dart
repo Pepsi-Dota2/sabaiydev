@@ -7,5 +7,9 @@ class HomeState with _$HomeState {
     @Default(0) int index,
     @Default(NavbarItem.home) NavbarItem navbarItem,
     @Default(false) bool onClick,
+    File? pickedImage, 
+    @Default(false) bool isImageLoading, 
+    String? imageErrorMessage, 
+    String? selectedImagePath,
   })= _HomeState;
 }
