@@ -11,5 +11,6 @@ class HomeState with _$HomeState {
     @Default(false) bool isImageLoading, 
     String? imageErrorMessage, 
     String? selectedImagePath,
+    @Default('') String selectFolder,
   })= _HomeState;
 }

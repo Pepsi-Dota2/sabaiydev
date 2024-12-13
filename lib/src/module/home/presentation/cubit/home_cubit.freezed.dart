@@ -24,6 +24,7 @@ mixin _$HomeState {
   bool get isImageLoading => throw _privateConstructorUsedError;
   String? get imageErrorMessage => throw _privateConstructorUsedError;
   String? get selectedImagePath => throw _privateConstructorUsedError;
+  String get selectFolder => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -45,7 +46,8 @@ abstract class $HomeStateCopyWith<$Res> {
       File? pickedImage,
       bool isImageLoading,
       String? imageErrorMessage,
-      String? selectedImagePath});
+      String? selectedImagePath,
+      String selectFolder});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? isImageLoading = null,
     Object? imageErrorMessage = freezed,
     Object? selectedImagePath = freezed,
+    Object? selectFolder = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -105,6 +108,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.selectedImagePath
           : selectedImagePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectFolder: null == selectFolder
+          ? _value.selectFolder
+          : selectFolder // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -125,7 +132,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       File? pickedImage,
       bool isImageLoading,
       String? imageErrorMessage,
-      String? selectedImagePath});
+      String? selectedImagePath,
+      String selectFolder});
 }
 
 /// @nodoc
@@ -149,6 +157,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? isImageLoading = null,
     Object? imageErrorMessage = freezed,
     Object? selectedImagePath = freezed,
+    Object? selectFolder = null,
   }) {
     return _then(_$HomeStateImpl(
       status: null == status
@@ -183,6 +192,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.selectedImagePath
           : selectedImagePath // ignore: cast_nullable_to_non_nullable
               as String?,
+      selectFolder: null == selectFolder
+          ? _value.selectFolder
+          : selectFolder // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -198,7 +211,8 @@ class _$HomeStateImpl implements _HomeState {
       this.pickedImage,
       this.isImageLoading = false,
       this.imageErrorMessage,
-      this.selectedImagePath});
+      this.selectedImagePath,
+      this.selectFolder = ''});
 
   @override
   @JsonKey()
@@ -221,10 +235,13 @@ class _$HomeStateImpl implements _HomeState {
   final String? imageErrorMessage;
   @override
   final String? selectedImagePath;
+  @override
+  @JsonKey()
+  final String selectFolder;
 
   @override
   String toString() {
-    return 'HomeState(status: $status, index: $index, navbarItem: $navbarItem, onClick: $onClick, pickedImage: $pickedImage, isImageLoading: $isImageLoading, imageErrorMessage: $imageErrorMessage, selectedImagePath: $selectedImagePath)';
+    return 'HomeState(status: $status, index: $index, navbarItem: $navbarItem, onClick: $onClick, pickedImage: $pickedImage, isImageLoading: $isImageLoading, imageErrorMessage: $imageErrorMessage, selectedImagePath: $selectedImagePath, selectFolder: $selectFolder)';
   }
 
   @override
@@ -244,7 +261,9 @@ class _$HomeStateImpl implements _HomeState {
             (identical(other.imageErrorMessage, imageErrorMessage) ||
                 other.imageErrorMessage == imageErrorMessage) &&
             (identical(other.selectedImagePath, selectedImagePath) ||
-                other.selectedImagePath == selectedImagePath));
+                other.selectedImagePath == selectedImagePath) &&
+            (identical(other.selectFolder, selectFolder) ||
+                other.selectFolder == selectFolder));
   }
 
   @override
@@ -257,7 +276,8 @@ class _$HomeStateImpl implements _HomeState {
       pickedImage,
       isImageLoading,
       imageErrorMessage,
-      selectedImagePath);
+      selectedImagePath,
+      selectFolder);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -277,7 +297,8 @@ abstract class _HomeState implements HomeState {
       final File? pickedImage,
       final bool isImageLoading,
       final String? imageErrorMessage,
-      final String? selectedImagePath}) = _$HomeStateImpl;
+      final String? selectedImagePath,
+      final String selectFolder}) = _$HomeStateImpl;
 
   @override
   DataStatus get status;
@@ -295,6 +316,8 @@ abstract class _HomeState implements HomeState {
   String? get imageErrorMessage;
   @override
   String? get selectedImagePath;
+  @override
+  String get selectFolder;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

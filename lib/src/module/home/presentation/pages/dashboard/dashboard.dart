@@ -13,6 +13,7 @@ import 'package:sabaiydev/src/module/files/presentation/cubit/file_cubit.dart';
 import 'package:sabaiydev/src/module/files/presentation/pages/file_page.dart';
 import 'package:sabaiydev/src/module/home/presentation/cubit/home_cubit.dart';
 import 'package:sabaiydev/src/module/home/presentation/pages/home_page.dart';
+import 'package:sabaiydev/src/module/home/presentation/widget/button_picker.dart';
 import 'package:sabaiydev/src/module/shared/presentation/pages/shared_page.dart';
 import 'package:sabaiydev/src/module/short/presentation/pages/short_page.dart';
 
@@ -47,42 +48,62 @@ class DashBoardPage extends StatelessWidget implements AutoRouteWrapper {
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          showCustomBottomSheet(
+          showModalBottomSheet(
             context: context,
-            height: size.height * 0.5,
-            content: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: AppColors.lightGrey,
-                          borderRadius: BorderRadius.circular(8)),
-                      child: IconButton(
+            enableDrag: true,
+            isScrollControlled: true,
+            builder: (context) => Container(
+              height: size.height * 0.5,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: Row(
+                      children: [
+                        ReusableImagePickerButton(
+                          height: size.height * 0.1,
+                          width: size.width * 0.2,
+                          color: AppColors.tealLight.withOpacity(0.3),
+                          icon: Icons.image,
+                          label: "Gallery",
                           onPressed: () {
                             cubit.pickImage(source: ImageSource.gallery);
                           },
-                          icon: Icon(Icons.image)),
-                    ),
-                    const Gap(20),
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          color: AppColors.lightGrey,
-                          borderRadius: BorderRadius.circular(8)),
-                      child: IconButton(
+                        ),
+                        const Gap(20),
+                        ReusableImagePickerButton(
+                          height: size.height * 0.1,
+                          width: size.width * 0.2,
+                          color: AppColors.tealLight.withOpacity(0.3),
+                          icon: Icons.camera,
+                          label: "Camera",
                           onPressed: () {
                             cubit.pickImage(source: ImageSource.camera);
-                          }, icon: Icon(Icons.camera)),
+                          },
+                        ),
+                        const Gap(20),
+                        ReusableImagePickerButton(
+                          height: size.height * 0.1,
+                          width: size.width * 0.2,
+                          color: AppColors.tealLight.withOpacity(0.3),
+                          icon: Icons.folder,
+                          label: "Folder",
+                          onPressed: () {
+                            // cubit.pickFolder();
+                          },
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           );
         },

@@ -143,13 +143,11 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                               child: ListTile(
                                 leading: ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
-                                  child: CachedNetworkImage(
-                                    imageUrl: data.image,
+                                  child: Image.asset(
+                                    data.image,
                                     fit: BoxFit.cover,
+                                    height: size.height * 0.1,
                                     width: size.width * 0.2,
-                                    placeholder: (context, url) =>
-                                        const CustomSkeleton(),
-                                    errorWidget: (context, url, error) => Image.asset("assets/images/man.jpg"),
                                   ),
                                 ),
                                 title: Text(data.name),
@@ -157,9 +155,9 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                 trailing: IconButton(
                                   onPressed: () {
                                     showCustomBottomSheet(
-                                            context: context,
-                                            height: size.height * 0.5,
-                                            content: Container());
+                                        context: context,
+                                        height: size.height * 0.5,
+                                        content: Container());
                                   },
                                   icon: const Icon(Icons.more_vert),
                                 ),
@@ -185,15 +183,11 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                 borderRadius: BorderRadius.circular(8),
                                 child: Column(
                                   children: [
-                                    CachedNetworkImage(
-                                      imageUrl: mockData.image,
+                                    Image.asset(
+                                      mockData.image,
                                       fit: BoxFit.fitWidth,
                                       height: size.height * 0.1,
                                       width: size.width * 1,
-                                      placeholder: (context, url) =>
-                                          const CustomSkeleton(),
-                                      errorWidget: (context, url, error) =>
-                                          Image.asset("assets/images/man.jpg"),
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -209,9 +203,9 @@ class HomePage extends StatelessWidget implements AutoRouteWrapper {
                                         IconButton(
                                           onPressed: () {
                                             showCustomBottomSheet(
-                                            context: context,
-                                            height: size.height * 0.5,
-                                            content: Container());
+                                                context: context,
+                                                height: size.height * 0.5,
+                                                content: Container());
                                           },
                                           icon: const Icon(Icons.more_vert),
                                         ),
